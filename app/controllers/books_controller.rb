@@ -15,6 +15,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    @book.rate = book_rate_params[:rate] unless book_rate_params[:rate].empty?
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
@@ -46,6 +47,10 @@ before_action :is_matching_login_user, only: [:edit, :update]
 
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+  
+  def book_rate_params
+    params.permit(:rate)
   end
   
   def is_matching_login_user
