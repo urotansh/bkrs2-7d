@@ -9,6 +9,16 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th>Favorite</th>
+          <th>Comment</th>
+          <th>Rate</th>
+          <th></th>
+          <th></th>
+        </tr>
   		  <tr>
           <td>
             <%= link_to(@book.user) do %>
@@ -27,6 +37,9 @@
           </td>
           <td class="comment_count">
             コメント数:<%= @book.book_comments.count %>
+          </td>
+          <td>
+            <%= render 'books/book_rate', book: @book %>
           </td>
           <% if @book.user == current_user %>
           <td>

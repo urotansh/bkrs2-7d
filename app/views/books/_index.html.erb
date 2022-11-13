@@ -7,7 +7,7 @@
       <th>Opinion</th>
       <th>Favorite</th>
       <th>Comment</th>
-      <th colspan="5"></th>
+      <th>Rate</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +29,9 @@
         </td>
         <td>
           コメント数:<%= book.book_comments.count %>
+        </td>
+        <td>
+          <%= render 'books/book_rate', book: book %>
         </td>
       </tr>
     <% end %>
